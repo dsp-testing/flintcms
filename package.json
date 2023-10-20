@@ -117,7 +117,7 @@
     "nodemailer": "^4.0.1",
     "nunjucks": "^3.0.0",
     "nunjucks-date-filter": "^0.1.1",
-    "passport": "^0.4.0",
+    "passport": "^0.6.0",
     "passport-local": "^1.0.0",
     "rand-token": "^0.3.0",
     "react-draggable-list": "^3.4.1",
