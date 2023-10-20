@@ -194,7 +194,7 @@
     "supertest": "^3.0.0",
     "test-selector": "^1.0.1",
     "url-loader": "^0.5.9",
-    "webpack-bundle-analyzer": "^2.13.1",
+    "webpack-bundle-analyzer": "^3.3.2",
     "webpack-chunk-hash": "^0.4.0"
   }
 }
