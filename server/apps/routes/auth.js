@@ -3,6 +3,7 @@ const passport = require('passport')
 const mongoose = require('mongoose')
 const randtoken = require('rand-token')
 const sendEmail = require('../../utils/emails/sendEmail')
+const rateLimit = require('express-rate-limit')
 
 const User = mongoose.model('User')
 const UserGroup = mongoose.model('UserGroup')
@@ -75,7 +76,13 @@ module.exports = () => {
     })
   })
 
-  router.post('/forgotpassword', async (req, res) => {
+  const forgotPasswordLimiter = rateLimit({
+    windowMs: 15 * 60 * 1000, // 15 minutes
+    max: 5, // limit each IP to 5 requests per windowMs
+    message: { success: false, message: 'Too many requests, please try again later.' }
+  })
+
+  router.post('/forgotpassword', forgotPasswordLimiter, async (req, res) => {
     const { email } = req.body
     const user = await User.findOne({ email: email.toString() })
 
